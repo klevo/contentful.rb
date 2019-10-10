@@ -368,6 +368,7 @@ module Contentful
       url = request.absolute? ? request.url : base_url + request.url
       logger.info(request: { url: url, query: request.query, header: request_headers }) if logger
       Response.new(
+        # TODO: This seems to be the best place to add GET query cache
         self.class.get_http(
           url,
           request_query(request.query),
